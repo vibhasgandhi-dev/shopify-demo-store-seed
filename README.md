@@ -29,3 +29,9 @@ Look up `LOCATION_ID` and `PUBLICATION_ONLINE` with:
 Photos are Unsplash images referenced by URL (`unsplash-candidates.json` holds the shortlist per category). Swap in your own catalogue by editing the `P` list in `seed.py`.
 
 Vibhas Gandhi
+
+## Making the grid look right
+
+Two things matter more than the photos themselves:
+- Every image is requested as a **4:5 centre crop** (`fit=crop&w=1600&h=2000`), so cards line up.
+- The theme's product-card `image_ratio` is set to `portrait` instead of `adapt` (`shopify theme pull/push` on `templates/collection.json` and `templates/index.json`; the Admin API's `themeFilesUpsert` needs a Shopify exemption, the CLI does not).
