@@ -35,3 +35,12 @@ Vibhas Gandhi
 Two things matter more than the photos themselves:
 - Every image is requested as a **4:5 centre crop** (`fit=crop&w=1600&h=2000`), so cards line up.
 - The theme's product-card `image_ratio` is set to `portrait` instead of `adapt` (`shopify theme pull/push` on `templates/collection.json` and `templates/index.json`; the Admin API's `themeFilesUpsert` needs a Shopify exemption, the CLI does not).
+
+## Theme overrides (Horizon)
+
+`theme-overrides/` holds the three JSON files pushed to the live Horizon theme with `shopify theme push --only …`:
+- `templates/index.json`: hero uses an uploaded Shopify Files image (`shopify://shop_images/…`), h1 heading, CTA to the Brewers collection, large height.
+- `templates/collection.json`: product cards at `image_ratio: portrait`.
+- `sections/header-group.json`: announcement bar advertising the spend-and-save tiers that the discount Function applies.
+
+Upload the hero photo first with `fileCreate` (Admin GraphQL, `contentType: IMAGE`, no custom filename when the source URL has no extension), then reference it by its stored filename.
